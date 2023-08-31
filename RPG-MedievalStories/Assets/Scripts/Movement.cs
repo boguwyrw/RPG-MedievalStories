@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.AI;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent meshAgent;
+    [SerializeField] private Animator animator;
 
     private Camera mainCamera;
 
@@ -20,6 +22,7 @@ public class Movement : MonoBehaviour
         {
             MoveToTarget();
         }
+        AnimatorUpdate();
     }
 
     private void MoveToTarget()
@@ -32,5 +35,13 @@ public class Movement : MonoBehaviour
         {
             meshAgent.destination = raycastHit.point;
         }
+    }
+
+    private void AnimatorUpdate()
+    {
+        Vector3 velocity = meshAgent.velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        animator.SetFloat("ForwardSpeed", speed);
     }
 }

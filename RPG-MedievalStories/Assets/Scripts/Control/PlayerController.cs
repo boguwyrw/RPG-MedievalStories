@@ -19,15 +19,15 @@ namespace rpg.control
         {
             if (Input.GetMouseButtonDown(0))
             {
-                MoveToTarget();
+                MoveToPoint();
             }
         }
 
-        private void MoveToTarget()
+        private void MoveToPoint()
         {
-            Ray targetRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Ray rayPoint = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit raycastHit;
-            bool hasHit = Physics.Raycast(targetRay, out raycastHit);
+            bool hasHit = Physics.Raycast(rayPoint, out raycastHit);
 
             if (hasHit)
             {

@@ -23,7 +23,13 @@ namespace rpg.movement
 
         public void MoveTo(Vector3 destinationPoint)
         {
+            meshAgent.isStopped = false;
             meshAgent.destination = destinationPoint;
+        }
+
+        public void StopInFront()
+        {
+            meshAgent.isStopped = true;
         }
 
         private void AnimatorUpdate()

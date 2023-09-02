@@ -22,8 +22,8 @@ namespace rpg.control
         {
             if (Input.GetMouseButtonDown(0))
             {
+                if (MoveToTarget()) return;
                 MoveToPoint();
-                MoveToTarget();
             }
         }
 
@@ -38,7 +38,7 @@ namespace rpg.control
             }
         }
 
-        private void MoveToTarget()
+        private bool MoveToTarget()
         {
             RaycastHit[] raycastHits = Physics.RaycastAll(GetRayPoint());
             foreach (RaycastHit rayHit in raycastHits)
@@ -48,7 +48,11 @@ namespace rpg.control
                 if (combatTarget == null) continue;
 
                 characterFight.Attack(combatTarget);
+
+                return true;
             }
+
+            return false;
         }
 
         private Ray GetRayPoint()

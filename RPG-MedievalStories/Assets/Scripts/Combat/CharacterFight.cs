@@ -20,24 +20,32 @@ namespace rpg.combat
 
         private void Update()
         {
-            if (targetTransform != null)
+            if (targetTransform == null) return;
+
+            if (!GetIsInRange())
             {
-                bool isInRange = Vector3.Distance(transform.position, targetTransform.position) < weaponRange;
-                if (!isInRange)
-                {
-                    characterMovement.MoveTo(targetTransform.position);
-                }
-                else
-                {
-                    characterMovement.StopInFront();
-                }
+                characterMovement.MoveTo(targetTransform.position);         
             }
+            else
+            {
+                characterMovement.StopInFront();
+            }
+        }
+
+        private bool GetIsInRange()
+        {
+            return Vector3.Distance(transform.position, targetTransform.position) < weaponRange;
         }
 
         public void Attack(CombatTarget combatTarget)
         {
             Debug.Log("MAM CIE " + combatTarget.name);
             targetTransform = combatTarget.transform;
+        }
+
+        public void CancelTarget()
+        {
+            targetTransform = null;
         }
     }
 }

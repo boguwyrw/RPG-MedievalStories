@@ -34,7 +34,7 @@ namespace rpg.control
 
             if (hasHit)
             {
-                characterMovement.MoveTo(raycastHit.point);
+                characterMovement.StartMoveAction(raycastHit.point);
             }
         }
 

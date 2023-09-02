@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshAgent: {fileID: 5161502061347843036}
   animator: {fileID: 3199996852742214261}
+  characterFight: {fileID: 5654052410143224372}
 --- !u!114 &5654052410143224372
 MonoBehaviour:
   m_ObjectHideFlags: 0

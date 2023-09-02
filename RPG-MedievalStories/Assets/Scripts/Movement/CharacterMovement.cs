@@ -1,3 +1,4 @@
+using rpg.combat;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace rpg.movement
     {
         [SerializeField] private NavMeshAgent meshAgent;
         [SerializeField] private Animator animator;
+        [SerializeField] private CharacterFight characterFight;
 
         private void Start()
         {
@@ -19,6 +21,12 @@ namespace rpg.movement
         private void Update()
         {
             AnimatorUpdate();
+        }
+
+        public void StartMoveAction(Vector3 destinationPoint)
+        {
+            characterFight.CancelTarget();
+            MoveTo(destinationPoint);
         }
 
         public void MoveTo(Vector3 destinationPoint)

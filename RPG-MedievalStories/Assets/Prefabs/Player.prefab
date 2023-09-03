@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5161502061347843036}
   - component: {fileID: 3199996852742214261}
   - component: {fileID: 2636970982248266855}
+  - component: {fileID: 7152103444861281953}
   - component: {fileID: 5161502061347843037}
   - component: {fileID: 5654052410143224372}
   m_Layer: 0
@@ -137,6 +138,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 5161502061347843037}
   characterFight: {fileID: 5654052410143224372}
+--- !u!114 &7152103444861281953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161502061347842983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fa8b90d87d6f3408f0640ea38092d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5161502061347843037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshAgent: {fileID: 5161502061347843036}
   animator: {fileID: 3199996852742214261}
-  characterFight: {fileID: 5654052410143224372}
+  actionScheduler: {fileID: 7152103444861281953}
 --- !u!114 &5654052410143224372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 5161502061347843037}
+  actionScheduler: {fileID: 7152103444861281953}
 --- !u!1001 &3685561813004184851
 PrefabInstance:
   m_ObjectHideFlags: 0

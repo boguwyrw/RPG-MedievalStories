@@ -1,3 +1,4 @@
+using rpg.core;
 using rpg.movement;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,9 +6,10 @@ using UnityEngine;
 
 namespace rpg.combat
 {
-    public class CharacterFight : MonoBehaviour
+    public class CharacterFight : MonoBehaviour, IAction
     {
         [SerializeField] private CharacterMovement characterMovement;
+        [SerializeField] private ActionScheduler actionScheduler;
 
         private Transform targetTransform;
 
@@ -28,7 +30,7 @@ namespace rpg.combat
             }
             else
             {
-                characterMovement.StopInFront();
+                characterMovement.CancelAction();
             }
         }
 
@@ -37,15 +39,21 @@ namespace rpg.combat
             return Vector3.Distance(transform.position, targetTransform.position) < weaponRange;
         }
 
+        private void CancelTarget()
+        {
+            targetTransform = null;
+        }
+
         public void Attack(CombatTarget combatTarget)
         {
             Debug.Log("MAM CIE " + combatTarget.name);
+            actionScheduler.StartAction(this);
             targetTransform = combatTarget.transform;
         }
 
-        public void CancelTarget()
+        public void CancelAction()
         {
-            targetTransform = null;
+            CancelTarget();
         }
     }
 }

@@ -179,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 5161502061347843037}
   actionScheduler: {fileID: 7152103444861281953}
+  animator: {fileID: 3199996852742214261}
 --- !u!1001 &3685561813004184851
 PrefabInstance:
   m_ObjectHideFlags: 0

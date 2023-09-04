@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace rpg.combat
 {
-    public class CharacterFight : MonoBehaviour, IAction
+    public class PlayerFight : MonoBehaviour, IAction
     {
         [SerializeField] private CharacterMovement characterMovement;
         [SerializeField] private ActionScheduler actionScheduler;
@@ -16,7 +16,7 @@ namespace rpg.combat
 
         private Health healthComponent = null;
 
-        private float weaponRange = 1.9f;
+        private float weaponRange = 1.4f;
         private float timeBetweenHits = 1.25f;
         private float timeSinceLastHit = 0.0f;
 

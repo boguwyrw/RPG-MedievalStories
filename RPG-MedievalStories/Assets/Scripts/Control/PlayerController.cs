@@ -9,7 +9,7 @@ namespace rpg.control
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private CharacterMovement characterMovement;
-        [SerializeField] private CharacterFight characterFight;
+        [SerializeField] private PlayerFight playerFight;
 
         private Camera mainCamera;
 
@@ -47,7 +47,7 @@ namespace rpg.control
 
                 if (combatTarget == null) continue;
 
-                characterFight.Attack(combatTarget);
+                playerFight.Attack(combatTarget);
 
                 return true;
             }

@@ -14,9 +14,13 @@ namespace rpg.combat
 
         private Transform targetTransform;
 
-        private float weaponRange = 2.1f;
+        private Health healthComponent = null;
+
+        private float weaponRange = 1.9f;
         private float timeBetweenHits = 1.25f;
         private float timeSinceLastHit = 0.0f;
+
+        private int weaponDamage = 5;
 
         private void Start()
         {
@@ -31,7 +35,7 @@ namespace rpg.combat
 
             if (!GetIsInRange())
             {
-                characterMovement.MoveTo(targetTransform.position);         
+                characterMovement.MoveTo(targetTransform.position);
             }
             else
             {
@@ -62,7 +66,11 @@ namespace rpg.combat
         // Animation Event
         private void Hit()
         {
-            
+            if (healthComponent == null)
+            {
+                healthComponent = targetTransform.GetComponent<Health>();
+            }
+            healthComponent.TakeDamage(weaponDamage);
         }
 
         public void Attack(CombatTarget combatTarget)

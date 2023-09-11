@@ -4,18 +4,10 @@ using UnityEngine;
 
 namespace rpg.combat
 {
+    [RequireComponent(typeof(Health))]
     public class CombatTarget : MonoBehaviour
     {
-        
-        private void Start()
-        {
 
-        }
-
-        private void Update()
-        {
-
-        }
     }
 }
 

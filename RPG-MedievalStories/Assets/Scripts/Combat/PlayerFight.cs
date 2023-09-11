@@ -14,7 +14,7 @@ namespace rpg.combat
 
         private Transform targetTransform;
 
-        private Health healthComponent = null;
+        private Health targetHealth;
 
         private float weaponRange = 1.4f;
         private float timeBetweenHits = 1.25f;
@@ -33,6 +33,8 @@ namespace rpg.combat
 
             if (targetTransform == null) return;
 
+            if (targetHealth != null && targetHealth.IsDead) return;
+
             if (!GetIsInRange())
             {
                 characterMovement.MoveTo(targetTransform.position);
@@ -46,6 +48,8 @@ namespace rpg.combat
 
         private void HitAttackBehaviour()
         {
+            transform.LookAt(targetTransform);
+
             if (timeSinceLastHit > timeBetweenHits)
             {
                 timeSinceLastHit = 0.0f;
@@ -61,27 +65,30 @@ namespace rpg.combat
         private void CancelTarget()
         {
             targetTransform = null;
+            targetHealth = null;
         }
 
         // Animation Event
         private void Hit()
         {
-            if (healthComponent == null)
+            if (targetHealth == null)
             {
-                healthComponent = targetTransform.GetComponent<Health>();
+                targetHealth = targetTransform.GetComponent<Health>();
             }
-            healthComponent.TakeDamage(weaponDamage);
+            
+            targetHealth.TakeDamage(weaponDamage);
         }
 
         public void Attack(CombatTarget combatTarget)
         {
-            Debug.Log("MAM CIE " + combatTarget.name);
+            //Debug.Log("MAM CIE " + combatTarget.name);
             actionScheduler.StartAction(this);
             targetTransform = combatTarget.transform;
         }
 
         public void CancelAction()
         {
+            animator.SetTrigger("StopHitAttack");
             CancelTarget();
         }
     }

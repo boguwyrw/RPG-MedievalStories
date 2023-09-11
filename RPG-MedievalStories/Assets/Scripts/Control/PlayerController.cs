@@ -45,7 +45,8 @@ namespace rpg.control
             {
                 CombatTarget combatTarget = rayHit.transform.GetComponent<CombatTarget>();
 
-                if (combatTarget == null) continue;
+                //if (combatTarget == null) continue;
+                if (!playerFight.CanAttack(combatTarget)) continue;
 
                 playerFight.Attack(combatTarget);
 

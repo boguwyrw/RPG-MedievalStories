@@ -53,8 +53,14 @@ namespace rpg.combat
             if (timeSinceLastHit > timeBetweenHits)
             {
                 timeSinceLastHit = 0.0f;
-                animator.SetTrigger("HitAttack");
+                TriggerHitAttack();
             }
+        }
+
+        private void TriggerHitAttack()
+        {
+            animator.ResetTrigger("StopHitAttack");
+            animator.SetTrigger("HitAttack");
         }
 
         private bool GetIsInRange()
@@ -68,15 +74,30 @@ namespace rpg.combat
             targetHealth = null;
         }
 
+        private void StopHitAttack()
+        {
+            animator.ResetTrigger("HitAttack");
+            animator.SetTrigger("StopHitAttack");
+        }
+
         // Animation Event
         private void Hit()
         {
+            if (targetTransform == null) return;
+
             if (targetHealth == null)
             {
                 targetHealth = targetTransform.GetComponent<Health>();
             }
-            
+
             targetHealth.TakeDamage(weaponDamage);
+        }
+
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if (combatTarget == null) return false;
+            Health targetHealth = combatTarget.GetComponent<Health>();
+            return targetHealth != null && !targetHealth.IsDead;
         }
 
         public void Attack(CombatTarget combatTarget)
@@ -88,9 +109,9 @@ namespace rpg.combat
 
         public void CancelAction()
         {
-            animator.SetTrigger("StopHitAttack");
+            StopHitAttack();
             CancelTarget();
-        }
+        } 
     }
 }
 

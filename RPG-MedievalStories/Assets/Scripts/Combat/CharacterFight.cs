@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace rpg.combat
 {
-    public class PlayerFight : MonoBehaviour, IAction
+    public class CharacterFight : MonoBehaviour, IAction
     {
         [SerializeField] private CharacterMovement characterMovement;
         [SerializeField] private ActionScheduler actionScheduler;
@@ -65,7 +65,8 @@ namespace rpg.combat
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, targetTransform.position) < weaponRange;
+            float distToEnemy = Vector3.Distance(transform.position, targetTransform.position);
+            return distToEnemy < weaponRange;
         }
 
         private void CancelTarget()
@@ -93,14 +94,14 @@ namespace rpg.combat
             targetHealth.TakeDamage(weaponDamage);
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget == null) return false;
             Health targetHealth = combatTarget.GetComponent<Health>();
             return targetHealth != null && !targetHealth.IsDead;
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             //Debug.Log("MAM CIE " + combatTarget.name);
             actionScheduler.StartAction(this);

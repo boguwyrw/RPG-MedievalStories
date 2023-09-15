@@ -116,6 +116,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5161502061347842983, guid: 91dcf0cacab629e49b057dd45fa13e72, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161502061347843036, guid: 91dcf0cacab629e49b057dd45fa13e72, type: 3}
+      propertyPath: m_Speed
+      value: 4.66
+      objectReference: {fileID: 0}
     - target: {fileID: 6350361671983365401, guid: 91dcf0cacab629e49b057dd45fa13e72, type: 3}
       propertyPath: maxHealth
       value: 20
@@ -132,6 +140,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5161502061347842983, guid: 91dcf0cacab629e49b057dd45fa13e72, type: 3}
   m_PrefabInstance: {fileID: 6252458787050257802}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6836135091475801128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253237530572346925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e37fb81b95829844909781ac65115b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterFight: {fileID: 2635998383919222492}
+  sphereCollider: {fileID: 0}
+  chaseDistance: 5
 --- !u!114 &8937253524272446146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,5 +165,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fc491097d8da374fac2085a545f9224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2635998383919222492 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8237577071302554454, guid: 91dcf0cacab629e49b057dd45fa13e72, type: 3}
+  m_PrefabInstance: {fileID: 6252458787050257802}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253237530572346925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa46aa9e1dcef240bad3c25928272a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 3199996852742214261}
   - component: {fileID: 7152103444861281953}
   - component: {fileID: 6350361671983365401}
+  - component: {fileID: 5558237870520064936}
+  - component: {fileID: 8237577071302554454}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -162,3 +164,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3199996852742214261}
   maxHealth: 50
+--- !u!114 &5558237870520064936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161502061347842983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e977d42eec2ea9d478c745f5eb651d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshAgent: {fileID: 5161502061347843036}
+  animator: {fileID: 3199996852742214261}
+  actionScheduler: {fileID: 7152103444861281953}
+--- !u!114 &8237577071302554454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161502061347842983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa46aa9e1dcef240bad3c25928272a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterMovement: {fileID: 5558237870520064936}
+  actionScheduler: {fileID: 7152103444861281953}
+  animator: {fileID: 3199996852742214261}

@@ -9,7 +9,8 @@ namespace rpg.control
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private CharacterMovement characterMovement;
-        [SerializeField] private PlayerFight playerFight;
+        [SerializeField] private CharacterFight characterFight;
+        [SerializeField] private LayerMask enemyLayerMask;
 
         private Camera mainCamera;
 
@@ -40,15 +41,16 @@ namespace rpg.control
 
         private bool MoveToTarget()
         {
-            RaycastHit[] raycastHits = Physics.RaycastAll(GetRayPoint());
+            RaycastHit[] raycastHits = Physics.RaycastAll(GetRayPoint(), Mathf.Infinity, enemyLayerMask);
             foreach (RaycastHit rayHit in raycastHits)
             {
                 CombatTarget combatTarget = rayHit.transform.GetComponent<CombatTarget>();
 
-                //if (combatTarget == null) continue;
-                if (!playerFight.CanAttack(combatTarget)) continue;
+                if (combatTarget == null) continue;
 
-                playerFight.Attack(combatTarget);
+                if (!characterFight.CanAttack(combatTarget.gameObject)) continue;
+
+                characterFight.Attack(combatTarget.gameObject);
 
                 return true;
             }
